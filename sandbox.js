@@ -44,10 +44,17 @@ setInterval(tick, 1000);  // CALLING THE TICK FUNCTION EVERY SECONDS (1000 MILIS
 
 const tickTwo = () => {
     const now = new Date();
-    const hours = now.getHours();
+    let hours = now.getHours();
+    const twoFourHour = now.getHours();
     const minutes = now.getMinutes();
     const seconds = now.getSeconds();
     let prepend = hours >= 12 ? 'PM' : 'AM';
+    if(twoFourHour > 12){
+        hours -= 12;
+    }
+    if(twoFourHour == 0){
+        hours = 12;
+    }
     //console.log(hours, minutes, seconds);
     const html = `
         <span>${hours}</span>: 
